@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class InventoryService {
     public long InventoryQuantity(String productId) {
-        return 100;
+        return 670;
     }
 }
