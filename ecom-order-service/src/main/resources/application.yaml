@@ -1,6 +1,16 @@
 spring:
+  config:
+    import: "optional:file:./ecom-order-service/.env[.properties]"
   application:
     name: ecom-order-service
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
 
 server:
   port: 8080
+
+  
