@@ -1,4 +1,9 @@
 spring:
+  cloud:
+    openfeign:
+      httpclient:
+        hc5:
+          enabled: true
   config:
     import: "optional:file:./ecom-inventory-service/.env[.properties]"
   application:
@@ -14,6 +19,3 @@ spring:
 
 server:
   port: 8081
-
-  
-

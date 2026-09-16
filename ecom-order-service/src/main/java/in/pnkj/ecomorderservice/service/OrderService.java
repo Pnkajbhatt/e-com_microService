@@ -2,22 +2,24 @@ package in.pnkj.ecomorderservice.service;
 
 import org.springframework.stereotype.Service;
 
-import org.springframework.web.client.RestClient;
+import in.pnkj.ecomorderservice.client.InventoryClient;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 
-    private final RestClient restClient;
+    // private final RestClient restClient;
+    private final InventoryClient inventoryClient;
 
-    private OrderService(RestClient restClient) {
-        this.restClient = restClient;
-    }
+    public String placeOrder(Long productId) {
+        Long productQuantity = inventoryClient.getInventory(productId).quantity();
+        if(productQuantity == null || productQuantity < 1 ){
+            return "out of Stock" ;
+        }
+        
+       inventoryClient.decreaseStock(productId, 1L);
+       return "Order placed successfully";
 
-    public String placeOrder(String productId) {
-        String response = restClient.get()
-                .uri("http://localhost:8081/inventory/" + productId)
-                .retrieve()
-                .body(String.class);
-        return response;
     }
 }

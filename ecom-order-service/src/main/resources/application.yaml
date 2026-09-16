@@ -1,4 +1,9 @@
 spring:
+  cloud:
+    openfeign:
+      httpclient:
+        hc5:
+          enabled: true
   config:
     import: "optional:file:./ecom-order-service/.env[.properties]"
   application:
@@ -9,8 +14,5 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
-
 server:
   port: 8080
-
-  
