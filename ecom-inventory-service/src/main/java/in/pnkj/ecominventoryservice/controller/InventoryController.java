@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.service.annotation.PatchExchange;
-
 import in.pnkj.ecominventoryservice.dto.InventoryDtoResponse;
 import in.pnkj.ecominventoryservice.entity.Inventory;
 import in.pnkj.ecominventoryservice.service.InventoryService;
@@ -24,7 +22,7 @@ public class InventoryController {
     private final InventoryService service;
 
     @GetMapping("/{productId}")
-    public ResponseEntity<InventoryDtoResponse> InventoryQuantity(@PathVariable Long productId) {
+    public ResponseEntity<InventoryDtoResponse> Inventory(@PathVariable Long productId) {
         Inventory inventory = service.getItem(productId);
         return ResponseEntity.ok(InventoryDtoResponse.fromEntity(inventory));
     }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import in.pnkj.ecomorderservice.dto.InventoryDtoResponse;
 
-@FeignClient(name = "inventory-service", url = "http://localhost:8081")
+@FeignClient(name = "ecom-inventory-service")
 public interface InventoryClient {
 
     @GetMapping("/inventory/{productId}")
